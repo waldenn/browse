@@ -30,6 +30,9 @@
             :class-label="classLabel">
         </class-filter>
 
+        <button onclick="goBack()"><i class="fas fa-long-arrow-alt-left"></i></button>
+        <button onclick="goForward()"><i class="fas fa-long-arrow-alt-right"></i></button>
+
         <view-all-items
             @change-page="updatePage"
             @remove-filter="removeFilter"

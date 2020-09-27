@@ -11,6 +11,20 @@ if ( language === '' ){
 
 }
 
+function goBack() {
+
+  window.history.back();
+
+}
+
+function goForward() {
+
+  window.history.forward();
+
+}
+
+
+
 (function (history) {
     var pushState = history.pushState;
     history.pushState = function (state) {
