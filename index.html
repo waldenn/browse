@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <script src="/app/explore2/libs/jquery-3.4.0.min.js"></script>
+    <script src="./libs/vue.min.js"></script>
+    <script src="./libs/axios.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>conzept browse</title>
+    <link rel="stylesheet" href="/app/explore2/css/common.css">
+    <link href="/fonts/fontawesome/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default" style="display:none;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a style="font-size: 1.5em;" class="navbar-brand" href=".">browse</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container" id="app">
+
+        <class-filter
+            @change-page="updatePage"
+            @class-label="updateClassValue"
+            v-if="view == 'class-filter'"
+            :class-value="classValue"
+            :class-label="classLabel">
+        </class-filter>
+
+        <view-all-items
+            @change-page="updatePage"
+            @remove-filter="removeFilter"
+            @remove-range="removeRange"
+            @remove-quantity="removeQuantity"
+            @update-filter="updateFilter"
+            v-if="view =='view-all-items'"
+            :total-values="totalValues"
+            :class-label="classLabel"
+            :class-value="classValue"
+            :key="allItemscomponentKey"
+            :applied-filters="appliedFilters"
+            :applied-ranges="appliedRanges"
+            :applied-quantities="appliedQuantities">
+        </view-all-items>
+
+        <filters-view 
+            @change-page="updatePage"
+            @update-filter="updateFilter"
+            v-if="view =='filters'"
+            :total-values="totalValues"
+            :class-label="classLabel"
+            :class-value="classValue"
+            :applied-filters="appliedFilters"
+            :applied-ranges="appliedRanges"
+            :applied-quantities="appliedQuantities">
+        </filters-view>
+
+        <filter-values 
+            @change-page="updatePage"
+            @apply-filter="applyFilter"
+            @apply-range="applyRange" 
+            @apply-quantity="applyQuantityRange" 
+            @remove-filter="removeFilter"
+            @remove-range="removeRange"
+            @remove-quantity="removeQuantity"            
+            v-if="view =='filter-values'" 
+            :key="filterscomponentKey"
+            :total-values="totalValues"
+            :class-label="classLabel"
+            :class-value="classValue"
+            :current-filter="currentFilter"
+            :applied-filters="appliedFilters"
+            :applied-ranges="appliedRanges"
+            :applied-quantities="appliedQuantities">
+        </filter-values>
+
+        <subclass-view
+            @change-page="updatePage"
+            @update-class="updateClassValue"
+            v-if="view =='subclass'" 
+            :class-label="classLabel"
+            :class-value="classValue"
+            :applied-filters="appliedFilters"
+            :applied-ranges="appliedRanges"
+            :applied-quantities="appliedQuantities">
+        </subclass-view>
+
+        <superclass-view
+            @change-page="updatePage"
+            @update-class="updateClassValue"
+            v-if="view =='superclass'" 
+            :class-label="classLabel"
+            :class-value="classValue"
+            :applied-filters="appliedFilters"
+            :applied-ranges="appliedRanges"
+            :applied-quantities="appliedQuantities">
+        </superclass-view>
+        
+        <!--div class = "footer"><a href="/about">About Wikidata Walkabout</a></div-->
+    </div>
+    <script src="src/index.js"></script>
+</body>
+
+</html>
