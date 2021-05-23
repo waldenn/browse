@@ -50,7 +50,7 @@ headerView = Vue.component('header-view',{
                 <span v-else>
                     {{ range.valueLabel }}
                 </span> 
-                ( <a @click="removeRange(range)">&#x2715;</a> )
+                &nbsp;<a @click="removeRange(range)"><i title="remove filter" class="fas fa-times icon"></i></a>
             </p>
             <p v-for="quantity in appliedQuantities">
                 <b>
