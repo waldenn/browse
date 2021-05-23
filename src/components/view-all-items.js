@@ -26,8 +26,10 @@ viewallitems = Vue.component('view-all-items', {
         <div class="content" id="viewallitems">
             <div v-if="filtersCount==-1"></div>
             <p v-else-if="filtersCount==0">{{ websiteText.filtersCount||fallbackText.filtersCount }}</p>
+
             <div v-else-if="filtersCount<40" class="filter-box">
-                <img src="images/filter-icon.svg" height="14px" />
+             <details>
+              <summary><i class="fas fa-filter"></i> filter options:</summary>
                 <span v-for="filter in filters">
                     <a 
                         :href="pathForFilter(filter)" 
@@ -36,9 +38,11 @@ viewallitems = Vue.component('view-all-items', {
                         @click.ctrl="window.open(pathForFilter(filter),'_blank')">
                         {{filter.valueLabel.value}}
                     </a>
-                    <b v-if="filters[filtersCount-1].valueLabel.value != filter.valueLabel.value">&middot; </b>
+                    <b v-if="filters[filtersCount-1].valueLabel.value != filter.valueLabel.value"> </b>
                 </span>
+              </details> 
             </div>
+
             <div v-else>
                 <a class="classOptions" @click="changePage('filters')">{{ websiteText.addFilter||fallbackText.addFilter }}</a>
             </div>
@@ -75,7 +79,7 @@ viewallitems = Vue.component('view-all-items', {
                 {{totalValues<1000000?" / " + Math.ceil(totalValues/resultsPerPage):''}}
                 <a v-if="currentPage<totalValues/resultsPerPage" @click="displayData('next')">&gt;</a>
             </div>
-            <!--div><a :href="query">{{ websiteText.viewQuery||fallbackText.viewQuery }}</a></div>
+            <!--div><a :href="query">{{ websiteText.viewQuery||fallbackText.viewQuery }} foo</a></div>
             <div><a @click="exportCSV">Export as CSV</a></div-->
         </div>
     </div>`,

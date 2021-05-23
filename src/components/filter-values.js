@@ -53,7 +53,7 @@ filtervalues = Vue.component('filter-values', {
                                 onclick="return false;"> 
                                 {{filter.valueLabel.value}}
                             </a>
-                            <b v-if="cls[cls.length-1].valueLabel.value != filter.valueLabel.value">&middot; </b>
+                            <b v-if="cls[cls.length-1].valueLabel.value != filter.valueLabel.value"> </b>
                         </span>
                     </li>
                 </ul>
@@ -281,7 +281,7 @@ filtervalues = Vue.component('filter-values', {
                 </div>
                 <!--div><a @click="exportCSV">Export as CSV</a></div-->
             </div>
-            <div><a :href="query">{{ websiteText.viewQuery||fallbackText.viewQuery }}</a></div>
+            <!--div><a :href="query">{{ websiteText.viewQuery||fallbackText.viewQuery }}</a></div-->
         </div>
     </div>`,
     methods: {

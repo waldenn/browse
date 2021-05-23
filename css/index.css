@@ -92,10 +92,35 @@ a:hover {
 
 .filter-box{
     margin-bottom: 20px;
-    background-color: #f1f0fe;
-    border: 1px solid #6B34FF;
+    /* background-color: #f3a8ab2e; */
+    border: 2px solid #6B34FF;
     border-radius: 5px;
     padding: 10px;
+    width: max-content;
+}
+
+.header span {
+    background: #2d9b3936;
+    padding: 0.4em;
+    border-radius: 0.3em;
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 30%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: clip;
+    text-overflow: ellipsis;
+}
+
+.filter-box a {
+  text-indent: 1em;
+  display: block;
+}
+
+.icon {
+  vertical-align: middle;
+  font-size: 1.2em;
+  padding: 0.4em 0.5em;
 }
 
 .info span {

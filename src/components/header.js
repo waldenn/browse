@@ -25,16 +25,16 @@ headerView = Vue.component('header-view',{
             </p>
             <p v-for="filter in appliedFilters">
                 <b>
-                    <span v-if="filter.parentFilterValue" v-html="filter.parentFilterValueLabel + arrow + filter.filterValueLabel"> </span>
-                    <span v-else>
+                    <span class="filter-key" v-if="filter.parentFilterValue" v-html="filter.parentFilterValueLabel + arrow + filter.filterValueLabel"> </span>
+                    <span class="filter-key" v-else>
                         {{filter.filterValueLabel}}
                     </span>
                 </b>
-                :
-                <span v-if="filter.value == 'novalue'" :style="{ fontStyle: 'italic' }">
+                <i class="fas fa-long-arrow-alt-right"></i>
+                <span class="filter-value" v-if="filter.value == 'novalue'" :style="{ fontStyle: 'italic' }">
                     {{ filter.valueLabel }}</span><span v-else>{{ filter.valueLabel }}
                 </span> 
-                ( <a @click="removeFilter(filter)">&#x2715;</a> )
+                 &nbsp;<a @click="removeFilter(filter)"><i title="remove filter" class="fas fa-times icon"></i></a> 
             </p>
             <p v-for="range in appliedRanges">
                 <b>
@@ -43,7 +43,7 @@ headerView = Vue.component('header-view',{
                         {{range.filterValueLabel}}
                     </span>
                 </b>
-                : 
+                <i class="fas fa-long-arrow-alt-right"></i>
                 <span v-if="range.valueLL == 'novalue'" :style="{ fontStyle: 'italic' }">
                     {{ range.valueLabel }}
                 </span>
@@ -59,11 +59,11 @@ headerView = Vue.component('header-view',{
                         {{quantity.filterValueLabel}}
                     </span>
                 </b>
-                : 
+                <i class="fas fa-long-arrow-alt-right"></i>
                 <span v-if="quantity.valueLL == 'novalue'" :style="{ fontStyle: 'italic' }">
                     {{ quantity.valueLabel }}</span><span v-else>{{ quantity.valueLabel }}
                 </span> 
-                {{quantity.unit}}( <a @click="removeQuantity(quantity)">&#x2715;</a> )
+                {{quantity.unit}} &nbsp;<a @click="removeQuantity(quantity)"><i title="remove filter" class="fas fa-times icon"></i></a>
             </p>
         </div>
     `,
